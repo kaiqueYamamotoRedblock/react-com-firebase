@@ -1,18 +1,35 @@
 // eslint-disable-next-line
-import React from 'react'
+import React, { useState} from 'react'
 import './login.css'
 
+import firebase from '../../config/firebase'
+import 'firebase/auth'
+
 const Login = () => {
+
+  const [email, setEmail] = useState()
+  const [senha, setSenha] = useState()
+
+  function logar() {
+    firebase.auth()
+      .signInWithEmailAndPassword(email, senha)
+      .then(resultado => {
+        alert('usuario logado')
+      })
+      .catch(err => {
+        alert(err)
+      })
+  }
+
   return (
     <div className="login-content">
     <main className="form-signin">
         <form>
           <h1 className="h3 mb-3 fw-normal text-white fw-bold text-center">Login</h1>
+          <input onChange={(e) => setEmail(e.target.value)} type="email" id="inputEmail" className="form-control my-2" placeholder="Email address" autofocus />
+          <input onChange={(e) => setSenha(e.target.value)}type="password" id="inputPassword" className="form-control my-2" placeholder="Password" />
           
-          <input type="email" id="inputEmail" className="form-control my-2" placeholder="Email address" autofocus />
-          <input type="password" id="inputPassword" className="form-control my-2" placeholder="Password" />
-          
-          <button className="w-100 btn btn-lg btn-login" type="submit">Sign in</button>
+          <button onClick={logar} className="w-100 btn btn-lg btn-login" type="button">Logar</button>
 
           <div className="msg-login text-white text-center my-5">
             <span><strong>Wow! </strong> Você está conectado &#128526;</span>
