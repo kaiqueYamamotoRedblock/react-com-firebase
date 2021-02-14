@@ -18,7 +18,7 @@ const Login = () => {
             <span><strong>Wow! </strong> Você está conectado &#128526;</span>
             <span><strong>Ops! </strong> Verifique se a Senha ou Usuario está correto &#128546;</span>
           </div>
-
+          
           <div className="opcoes-login mt-5 text-center">
             <a href="#" className="mx-2">Recuperar Senha</a>
             <span className="text-white">&#9733;</span>
