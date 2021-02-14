@@ -9,15 +9,16 @@ const Login = () => {
 
   const [email, setEmail] = useState()
   const [senha, setSenha] = useState()
+  const [msgTipo, setMsgTipo] = useState()
 
   function logar() {
     firebase.auth()
       .signInWithEmailAndPassword(email, senha)
-      .then(resultado => {
-        alert('usuario logado')
+      .then(result => {
+        setMsgTipo('sucesso')
       })
       .catch(err => {
-        alert(err)
+        setMsgTipo('erro')
       })
   }
 
@@ -32,8 +33,8 @@ const Login = () => {
           <button onClick={logar} className="w-100 btn btn-lg btn-login" type="button">Logar</button>
 
           <div className="msg-login text-white text-center my-5">
-            <span><strong>Wow! </strong> Você está conectado &#128526;</span>
-            <span><strong>Ops! </strong> Verifique se a Senha ou Usuario está correto &#128546;</span>
+            {msgTipo === 'sucesso' && <span><strong>Wow! </strong> Você está conectado &#128526;</span>}
+            {msgTipo === 'erro' && <span><strong>Ops! </strong> Verifique se a Senha ou Usuario está correto &#128546;</span>}
           </div>
 
           <div className="opcoes-login mt-5 text-center">
