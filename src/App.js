@@ -1,5 +1,5 @@
 
-function App() {
+const App = () => {
   return (
     <h1> Ola Funcionando </h1>
   );
